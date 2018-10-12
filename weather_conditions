@@ -34,6 +34,33 @@ try:
  file = open('temp.txt','w') 
  
  file.write(mytemp) 
+ 
+ 
+ #use different colour LED to display temperature (e.g. red if temperature over 25C, yellow if temperature over 17C etc..."
+ 
+ if 0 < currentTemp < 10:
+  GPIO.output(27,GPIO.HIGH)
+  GPIO.output(23,GPIO.LOW) 
+  GPIO.output(22,GPIO.LOW) 
+  GPIO.output(24,GPIO.LOW)
+ 
+ if 10 < currentTemp < 17:
+  GPIO.output(24,GPIO.HIGH)
+  GPIO.output(23,GPIO.LOW)
+  GPIO.output(22,GPIO.LOW)
+  GPIO.output(27,GPIO.LOW)
+
+ if 17 < currentTemp < 25:
+  GPIO.output(23,GPIO.HIGH)
+  GPIO.output(24,GPIO.LOW)
+  GPIO.output(22,GPIO.LOW) 
+  GPIO.output(27,GPIO.LOW)
+
+ if currentTemp > 25: 
+  GPIO.output(22,GPIO.HIGH)
+  GPIO.output(23,GPIO.LOW)
+  GPIO.output(24,GPIO.LOW)
+  GPIO.output(27,GPIO.LOW)
 
 except KeyboardInterrupt:
  print("Exit")
